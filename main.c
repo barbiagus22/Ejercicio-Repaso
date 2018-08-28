@@ -26,8 +26,10 @@ int main()
     int cantidadPares=0;
     float promedioPositivos=0;
     float promedioNegativos=0;
+    int DiferenciaPyn;
 
-    do{
+    do
+    {
         printf("Ingrese un numero: \n");
         scanf ("%d", &numero);
 
@@ -61,10 +63,11 @@ int main()
         scanf("%c", &respuesta);
 
 
-    } while (respuesta== 's');
+    }while (respuesta== 's');
 
     promedioPositivos=sumaPositivos/cantidadPositivos;
     promedioNegativos=sumaNegativos/cantidadNegativos;
+    DiferenciaPyn=cantidadPositivos-cantidadNegativos;
 
 
     printf( " La suma de los negativos es: %d \n", sumaNegativos);
@@ -75,6 +78,7 @@ int main()
     printf( " La cantidad de numeros pares es: %d \n", cantidadPares);
     printf(" El promedio de los positivos es : %f\n", promedioPositivos);
     printf(" El promedio de los negativos es : %f\n", promedioNegativos);
+    printf(" La diferencia entre positivos y negativos : %d\n", DiferenciaPyn);
 
 
 }
