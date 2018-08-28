@@ -27,8 +27,7 @@ int main()
     float promedioPositivos=0;
     float promedioNegativos=0;
 
-    while (respuesta== 's')
-    {
+    do{
         printf("Ingrese un numero: \n");
         scanf ("%d", &numero);
 
@@ -60,7 +59,9 @@ int main()
         printf(" Desea continuar si o no:  \n");
         fflush(stdin);
         scanf("%c", &respuesta);
-    }
+
+
+    } while (respuesta== 's');
 
     promedioPositivos=sumaPositivos/cantidadPositivos;
     promedioNegativos=sumaNegativos/cantidadNegativos;
