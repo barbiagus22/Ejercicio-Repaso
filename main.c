@@ -1,105 +1,73 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+#include "math.h"
 
-float ingresarNumero(char mensaje[]);
 
 int main()
 {
-    int flag =1, opcion;
-    float numero1, numero2;
-    float flagA=0, flagB=0;
-
-    //int banderaoperando1=0; =flag
-    //int banderaoperando2=0; =flag
-
-    //getchar (); para aplicacion para ver que ocurre.
+    int flagSalida = 1, opcion, flagA = 0, flagB = 0;
+    float numA, numB;
 
     do
     {
-        system("cls");
-
-        printf("  MENU \n\n");
-
-            if (flagA==1){
-
-                printf("1. Ingrese 1er operando (A= %.2f) \n", numero1);
-            }
-            else
-            {
-                printf("1. Ingrese 1er operando (A=x) \n", numero1);
-            }
-
-
-
-        if (flagB==1){
-
-                printf("2. Ingrese 2do operando (B= %.2f)\n", numero2);
-            }
-            else
-            {
-                printf("2. Ingrese 2do operando (B=x)\n", numero2);
-            }
-
-
-
-        printf(" \n\n INGRESE UNA OPCION DEL MENU:\n");
+        if (flagA == 1)
+        {
+            printf("1. Ingresar 1er operando (A=%.2f)\n", numA);
+        } else
+        {
+            printf("1. Ingresar 1er operando (A=x)\n");
+        }
+        if (flagB == 1)
+        {
+            printf("2. Ingresar 2do operando (B=%.2f)\n", numB);
+        } else
+        {
+            printf("2. Ingresar 2do operando (B=y)\n");
+        }
+        printf("3. Calcular\n");
+        printf("4. Informar\n");
+        printf("5. Salir\n");
+        printf("\nIngrese una opcion del menu:");
+        __fpurge(stdin);
         scanf("%d", &opcion);
 
-        switch(opcion)
+        switch (opcion)
         {
         case 1:
-            numero1 = ingresarNumero("Ingrese un 1er operando\n");
-            flagA =1;
+            ingresarNumero(&numA);
+            flagA = 1;
             break;
         case 2:
-            numero2 = ingresarNumero("Ingrese un 2er operando\n");
-            flagB =1;
+            ingresarNumero(&numB);
+            flagB = 1;
             break;
-            // case 3
-            /*if flagA ==1 && flogB ==1
+        case 3:
+            if (flagA == 1 && flagB == 1)
             {
-                prinf ("calculador");
-                suma()
-                resta()
-                etc
+                printf("Calculado..");
+            } else
+            {
+                printf("Ingrese los numeros!");
             }
-            else {
-                "Ingrese los numero"
-            }
-
-            */
-
-            //  printf ("Ingrese un 2do operando\n");
-            // scanf( "%d", &operando2);
-            //break;
-            // default:
-            //    printf ("Ingrese una opcion valida");
-
-            /*  case 3:
-
-                  suma ();
-                  */
+            break;
+        case 4:
+            printf("RESULTADOS");
+            break;
+        case 5:
+            printf("Saliendo...");
+            flagSalida = 0;
+            break;
+        default:
+            printf("Ingrese una opcion valida!\n");
         }
 
-
+        __fpurge(stdin);
+        printf("\nIngrese ENTER para continuar...");
+        getchar();
+        system("clear");
     }
-    while(flag);
+    while(flagSalida != 0);
 
-
-    // fpurge (stdin/;
-    //printf ("\ ingrese ENTER para continuar...");
-    //getchar();
-    //system("clear");
-
-    return 0 ;
-}
-
-float ingresarNumero(char mensaje[])
-{
-    float numero;
-    printf("%s",mensaje);
-    scanf("%f", &numero);
-    return numero;
+    return 0;
 }
 
