@@ -1,42 +1,105 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
-int division (float numero1, float numero2, float resultado);
+float ingresarNumero(char mensaje[]);
 
 int main()
 {
+    int flag =1, opcion;
+    float numero1, numero2;
+    float flagA=0, flagB=0;
 
-int primerResultado;
-float resultado, num1=10, num2=1.5;
+    //int banderaoperando1=0; =flag
+    //int banderaoperando2=0; =flag
+
+    //getchar (); para aplicacion para ver que ocurre.
+
+    do
+    {
+        system("cls");
+
+        printf("  MENU \n\n");
+
+            if (flagA==1){
+
+                printf("1. Ingrese 1er operando (A= %.2f) \n", numero1);
+            }
+            else
+            {
+                printf("1. Ingrese 1er operando (A=x) \n", numero1);
+            }
 
 
 
-    primerResultado = division(num1, num2, &resultado);
+        if (flagB==1){
 
-if (primerResultado ==0 ) {
-
-    printf ("Division exitosa");
-}
-
-    else {
-        printf( "No se puede dividir por 0");
-    }
+                printf("2. Ingrese 2do operando (B= %.2f)\n", numero2);
+            }
+            else
+            {
+                printf("2. Ingrese 2do operando (B=x)\n", numero2);
+            }
 
 
-    return 0;
-}
 
-int division (float numero1, float numero2, float resultado){
+        printf(" \n\n INGRESE UNA OPCION DEL MENU:\n");
+        scanf("%d", &opcion);
 
-        int retorno= -1;
-        float resultado;
+        switch(opcion)
+        {
+        case 1:
+            numero1 = ingresarNumero("Ingrese un 1er operando\n");
+            flagA =1;
+            break;
+        case 2:
+            numero2 = ingresarNumero("Ingrese un 2er operando\n");
+            flagB =1;
+            break;
+            // case 3
+            /*if flagA ==1 && flogB ==1
+            {
+                prinf ("calculador");
+                suma()
+                resta()
+                etc
+            }
+            else {
+                "Ingrese los numero"
+            }
 
-        if (numero2 != 0) {
+            */
 
-            resultado= numero1/numero2;
-            retorno=0;
+            //  printf ("Ingrese un 2do operando\n");
+            // scanf( "%d", &operando2);
+            //break;
+            // default:
+            //    printf ("Ingrese una opcion valida");
+
+            /*  case 3:
+
+                  suma ();
+                  */
         }
 
-        return retorno;
 
+    }
+    while(flag);
+
+
+    // fpurge (stdin/;
+    //printf ("\ ingrese ENTER para continuar...");
+    //getchar();
+    //system("clear");
+
+    return 0 ;
 }
+
+float ingresarNumero(char mensaje[])
+{
+    float numero;
+    printf("%s",mensaje);
+    scanf("%f", &numero);
+    return numero;
+}
+
