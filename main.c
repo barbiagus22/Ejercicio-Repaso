@@ -1,73 +1,118 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "math.h"
+#define TAM 6
 
+int buscarNumtamero (int vector [], int tam, int valor);
+void mostrarVector ( int vec[], int tam );
+int buscarMayor (int vector [], int tam);
 
 int main()
 {
-    int flagSalida = 1, opcion, flagA = 0, flagB = 0;
-    float numA, numB;
+    char respuesta='s';
+    int numero;
+    int indice;
+    int vector[TAM] = {0};
+    int numeroMayor;
 
     do
     {
-        if (flagA == 1)
-        {
-            printf("1. Ingresar 1er operando (A=%.2f)\n", numA);
-        } else
-        {
-            printf("1. Ingresar 1er operando (A=x)\n");
-        }
-        if (flagB == 1)
-        {
-            printf("2. Ingresar 2do operando (B=%.2f)\n", numB);
-        } else
-        {
-            printf("2. Ingresar 2do operando (B=y)\n");
-        }
-        printf("3. Calcular\n");
-        printf("4. Informar\n");
-        printf("5. Salir\n");
-        printf("\nIngrese una opcion del menu:");
-        __fpurge(stdin);
-        scanf("%d", &opcion);
 
-        switch (opcion)
-        {
-        case 1:
-            ingresarNumero(&numA);
-            flagA = 1;
-            break;
-        case 2:
-            ingresarNumero(&numB);
-            flagB = 1;
-            break;
-        case 3:
-            if (flagA == 1 && flagB == 1)
-            {
-                printf("Calculado..");
-            } else
-            {
-                printf("Ingrese los numeros!");
-            }
-            break;
-        case 4:
-            printf("RESULTADOS");
-            break;
-        case 5:
-            printf("Saliendo...");
-            flagSalida = 0;
-            break;
-        default:
-            printf("Ingrese una opcion valida!\n");
-        }
+        printf("Ingrese numero: ");
+        scanf("%d", &numero);
 
-        __fpurge(stdin);
-        printf("\nIngrese ENTER para continuar...");
-        getchar();
-        system("clear");
+        printf("Ingrese indice: ");
+        scanf("%d", &indice);
+
+        vector[indice]=numero;
+
+        printf("Continuar: ");
+        fflush(stdin);
+        scanf("%c", &respuesta);
+
+
     }
-    while(flagSalida != 0);
+    while (respuesta== 's');
+
+
+    mostrarVector (vector,TAM);
+    indice= buscarNumero (vector,TAM, 20);
+
+    if (indice != -1)
+    {
+        printf("El valor se encuentra en el indice es %d \n", indice);
+    }
+    else
+    {
+        printf("El numero no esta");
+    }
+
+    numeroMayor= buscarMayor (vector,TAM);
+
+    printf( "El mayor numero en el vector es: %d \n", numeroMayor);
 
     return 0;
 }
+
+
+
+void mostrarVector ( int vec[], int tam )
+{
+
+    for (int i=0; i<tam; i ++)
+    {
+
+        printf( "%d \n\n ",vec[i]);
+
+    }
+
+}
+
+int buscarNumero (int vector [], int tam, int valor)
+{
+    int indice=-1;
+
+    for (int i=0; i<tam; i ++)
+    {
+
+        if (vector[i]== valor)
+        {
+
+            indice=i;
+            break;
+        }
+
+    }
+
+    return indice;
+}
+
+
+int buscarMayor (int vector [], int tam)
+{
+
+    int mayor=vector [0];
+
+    for (int i=0; i<tam; i ++)
+    {
+
+        if  (vector [i]>mayor )
+        {
+
+            mayor=vector [i];
+        }
+
+    }
+
+    return mayor;
+}
+
+
+
+
+
+
+
+
+
+
 
